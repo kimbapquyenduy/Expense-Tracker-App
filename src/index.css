@@ -1,0 +1,45 @@
+.tracker-sub-container{
+  
+  padding: 15px 75px;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.income{
+  color: green;
+  font-size: 25px;
+  font-weight: bold;
+}
+.expense{
+  color: red;
+  font-size: 25px;
+  font-weight: bold;
+}
+body{
+  background-color: rgb(250, 250, 250);
+
+  font-family:'Courier New', Courier, monospace;
+}
+.history{
+  display: flex;
+  width: 100%;
+  height: 40px;
+  border-right: 7px solid;
+  margin: 10px 0px;
+  align-items: center;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.ofincome{
+  border-color: green ;
+}
+.ofexpense{
+  border-color: rgb(255, 34, 34) ;
+}
+.amount{
+  margin-right: 10px;
+}
+.type{
+  flex: 1;
+ margin-left: 10px;
+}
