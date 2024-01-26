@@ -14,7 +14,6 @@ export const ExpenseForm = ({ ChangeBalance, addItem }) => {
       addItem(TextValue, AmountValue, false);
       ChangeBalance(AmountValue, false);
     }
-    console.log(AmountValue);
   }
   return (
     <>

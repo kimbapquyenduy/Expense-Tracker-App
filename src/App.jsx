@@ -28,7 +28,6 @@ function App() {
   function ChangeBalance(Ammount, Type) {
     if (Type) setTotalIncome(parseInt(TotalIncome) + parseInt(Ammount));
     else setTotalExpense(parseInt(TotalExpense) + parseInt(Ammount));
-    setTotalCash(TotalIncome + TotalExpense);
   }
 
   return (
