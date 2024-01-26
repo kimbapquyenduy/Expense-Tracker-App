@@ -8,9 +8,28 @@ import { History } from "./Components/History";
 import { ExpenseForm } from "./Components/ExpenseForm";
 
 function App() {
-  const [TotalIncome, setTotalIncome] = useState(200);
-  const [TotalExpense, setTotalExpense] = useState(300);
-  const [TotalCash, setTotalCash] = useState(TotalIncome + TotalExpense);
+  const [TotalIncome, setTotalIncome] = useState(0);
+  const [TotalExpense, setTotalExpense] = useState(0);
+  const [HistoryItem, setHistoryItem] = useState([]);
+
+  function addItem(Text, Amount, Type) {
+    setHistoryItem((currentItem) => {
+      return [
+        ...currentItem,
+        {
+          id: crypto.randomUUID(),
+          Text,
+          Amount,
+          Type,
+        },
+      ];
+    });
+  }
+  function ChangeBalance(Ammount, Type) {
+    if (Type) setTotalIncome(parseInt(TotalIncome) + parseInt(Ammount));
+    else setTotalExpense(parseInt(TotalExpense) + parseInt(Ammount));
+    setTotalCash(TotalIncome + TotalExpense);
+  }
 
   return (
     <>
@@ -19,16 +38,16 @@ function App() {
         style={{ textAlign: "left", padding: " 0 35%" }}
       >
         <h1 style={{ padding: "5px 0" }}>Expense Tracker</h1>
-        <TotalBalance TotalCash={TotalCash} />
+        <TotalBalance TotalIncome={TotalIncome} TotalExpense={TotalExpense} />
         <Tracker TotalIncome={TotalIncome} TotalExpense={TotalExpense} />
-        <h1 style={{ padding: "10px ", borderBottom: "1px solid black" }}>
+        <h2 style={{ padding: "5px ", borderBottom: "1px solid black" }}>
           History
-        </h1>
-        <History />
-        <h1 style={{ padding: "10px ", borderBottom: "1px solid black" }}>
+        </h2>
+        <History HistoryItem={HistoryItem} />
+        <h2 style={{ padding: "5px ", borderBottom: "1px solid black" }}>
           Add New Transactions
-        </h1>
-        <ExpenseForm />
+        </h2>
+        <ExpenseForm ChangeBalance={ChangeBalance} addItem={addItem} />
       </div>
     </>
   );

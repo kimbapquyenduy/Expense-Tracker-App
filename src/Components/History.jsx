@@ -1,13 +1,26 @@
 import React from "react";
 
-export const History = () => {
+export const History = ({ HistoryItem }) => {
   return (
     <>
-      <div className="history ofincome">
-        <div className="type">Bookd</div>
-        <div className="amount">23</div>
-      </div>
-      <div className="history ofexpense"></div>
+      {HistoryItem.length === 0 && "No History"}
+      {HistoryItem.map((Item) => {
+        if (Item.Type) {
+          return (
+            <div className="history ofincome" key={Item.id}>
+              <div className="type">{Item.Text}</div>
+              <div className="amount">{Item.Amount}</div>
+            </div>
+          );
+        } else {
+          return (
+            <div className="history ofexpense">
+              <div className="type">{Item.Text}</div>
+              <div className="amount">{Item.Amount}</div>
+            </div>
+          );
+        }
+      })}
     </>
   );
 };
